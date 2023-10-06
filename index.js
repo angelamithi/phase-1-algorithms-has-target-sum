@@ -1,17 +1,51 @@
-function hasTargetSum(array, target) {
   // Write your algorithm here
+function hasTargetSum(array, target) {
+  const numSet = new Set(); 
+  
+  for (let num of array) {
+      const complement = target - num; 
+      
+   
+      if (numSet.has(complement)) {
+          return true;
+      }
+      
+     
+      numSet.add(num);
+  }
+  
+ 
+  return false;
 }
+
+// Example usage:
+const numbers = [2, 4, 7, 11, 15];
+const targetSum = 9;
+console.log(hasTargetSum(numbers, targetSum)); 
+
 
 /* 
   Write the Big O time complexity of your function here
+  The big notation for the above algorithm is O(n)
 */
+
+
 
 /* 
   Add your pseudocode here
+  Create a set to store encountered numbers
+  Calculate the complement needed to reach the target
+  If the complement is in the set, a pair is found
+  Otherwise, add the current number to the set
+  if no pair is found return false
 */
 
 /*
   Add written explanation of your solution here
+  In this algorithm, we iterate through the given array of numbers. 
+  For each number, we calculate its complement (the number needed to reach the target) and check if it is present in the set.
+  If it is, we have found a pair that adds up to the target, and we return true. 
+  If no pair is found after iterating through the array, the function returns false.
 */
 
 // You can run `node index.js` to view these console logs
